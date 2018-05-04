@@ -1,4 +1,4 @@
-<img src="images/SWIFT4ARM.png" alt="Swift4Arm" height="100" >
+<img src="images/SWIFT4ARM.png" alt="Swift4Arm" height="80" >
 
 # Swift 4 Arm
 
