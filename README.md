@@ -10,7 +10,7 @@
 
 
 ## Integration Major Problem
->	* Problem on: __/proc/cpu/aligment__ 
+>	* Problem on: __/proc/cpu/alignment__ 
 >	* Memory Managment
 >	* ARCH build support
 
@@ -20,9 +20,9 @@ And i thought it's not possible we must do something before it is to late, at th
 swift 4.1 pre release and then swift on arm32 was exactly one major release behind.</br></br>
 At the beginning i tried all different compile setting and i made also some comparison with a x86 linux system
 but this was only wasting time. </br></br>
-Then i tried all possible llvm/cland version and the same result.</br></br>
+Then i tried all possible llvm/clang version and the same result.</br></br>
 After that i made the decision to scan completely the source code and it paid off.</br></br>
-I learned so a lot of thinks my fortune was to find just at the early stage the solution for the _/proc/cpu/aligment_ problem that
+I found just at the early stage the solution for the _/proc/cpu/alignment_ problem that
 gave me a lot confidence that we don’t take so long for resolving this arm32 issue
 but at the end the must challenging part hast just began. </br></br>
 ## Memory managment ##
