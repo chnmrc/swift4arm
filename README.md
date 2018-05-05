@@ -26,19 +26,21 @@ my fortune was to find just at the early stage the solution for the _/proc/cpu/a
 gave me a lot confidence that we don’t take so long for resolving this arm32 issue
 but at the end the must challenging part hast just began. </br></br>
 ## Memory managment ##
-the most impostant think in this a kind of project
-i started to look at all glibc version since
-2.23 and also here scanned the malloc part of the glibc was i rhink i well done
+An impostant topic in this a kind of project.</br>
+I started to look at the glibc  since
+2.23 version and also here scanned the malloc part of the glibc was i rhink i well done
 and realy stright forward and the same here a i learned a lot on the internaly memory menagment and i thougth why we must take care of memory alignment when we can deliver this to malloc
 I know that here there is room for improvement and so i leased so and i hope we found together a beat solution
 
-then NIO come out and that got me te final motivation to keep fighting.
-I know norman maurer from the java community and i thout if he does something like this it must me well done
-and it is and what for a hreat opportunity fot such a kind of arm32 bit devices so a lot of ideas come in my mind.
-and so finaly i come to this patch release
-what ithink is not the ideal solution but the most important think we have now a working enviroment
-And finally this great [announcement](https://swift.org/blog/swift-community-hosted-ci/) i was so surprised thank you @chnmrc and always
-thank you [steve](https://www.apple.com/stevejobs/)
+Then NIO come out and that got me the final motivation to keep fighting. <br/>
+I know [**Norman Maurer**](https://github.com/normanmaurer) from the java community, and i thought if he does something like this it must be well done
+and it is.</br> 
+And what for a great opportunity for such a kind of arm32  devices so a lot of ideas comes in my mind
+like a **NIO** based scalable MQTT broker.<br/>. Here i want to thank's both of  [**Norman Maurer**](https://github.com/normanmaurer) and
+[**@helge**](https://github.com/helje5) for the quick integration of arm32 on **NIO**. <br/>
+At the end i come to this patch release
+what i think is not the ideal solution but the most important think we have now a working environment to work on.<br/>.
+And finally this great [announcement](https://swift.org/blog/swift-community-hosted-ci/) i was so surprised thank you [**apple**](https://github.com/apple) and always thank you [steve](https://www.apple.com/stevejobs/)
 
 ## Patch Procedure ##
 
@@ -54,7 +56,7 @@ thank you [steve](https://www.apple.com/stevejobs/)
 
 <br/>
 <br/>
-__Post Scriptum__
+**_Post Scriptum_**
 <br/>
 <br/>
 * Many Thanks to [**@hpux735**](https://github.com/hpux735) for the great support. <br/>
@@ -65,6 +67,7 @@ __Post Scriptum__
 <br/>
 
 > For any challenging project swift related fell free to [**contact me**](http://mchini.com) <info@mchini.com>.
+
 <br/>
 <br/>
 
