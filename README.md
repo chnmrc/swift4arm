@@ -36,7 +36,7 @@ I know [**Norman Maurer**](https://github.com/normanmaurer) from the java commun
 And what for a great opportunity for such a kind of arm32  devices so a lot of ideas comes in my mind
 like a **NIO** based scalable MQTT broker.<br/> Here i want to thank's both of  [**@normanmaurer**](https://github.com/normanmaurer) and
 [**@helge**](https://github.com/helje5) for the quick integration of arm32 on **NIO**. <br/> <bt/>
-At the end i come to this patch release what i think is not the ideal solution but the most important think we have now a working environment to work on.<br/>
+At the end i come to this patch release what i think is not the ideal solution but the most important thing is we have now a working environment to work on.<br/>
 And finally this great [announcement](https://swift.org/blog/swift-community-hosted-ci/) i was so surprised thank you [**apple**](https://github.com/apple) and always thank you [steve](https://www.apple.com/stevejobs/)
 
 ## Patch Procedure ##
