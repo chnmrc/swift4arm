@@ -54,8 +54,7 @@ And finally this great [announcement](https://swift.org/blog/swift-community-hos
 
 
 ## Conclusions ##
-<br/>
-<br/>
+
 * Many Thanks to [**@hpux735**](https://github.com/hpux735) for the great support. <br/>
 * And also to [@joe](http://dev.iachieved.it/iachievedit/) for initiating all this.
 
