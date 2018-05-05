@@ -5,6 +5,7 @@
 > 2. ## Brief Introduction ##
 > 3. ## Memory managment ##
 > 4. ## Patch Procedure ##
+> 4. ## Conclusions ##
 
 </br></br>
 
@@ -53,7 +54,7 @@ And finally this great [announcement](https://swift.org/blog/swift-community-hos
 
 <br/>
 <br/>
-_ Post Scriptum _
+## Conclusions ##
 <br/>
 <br/>
 * Many Thanks to [**@hpux735**](https://github.com/hpux735) for the great support. <br/>
