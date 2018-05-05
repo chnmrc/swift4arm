@@ -15,9 +15,9 @@
 >	* ARCH build support
 
 ## Brief Introduction ##
-All began on early 2018 and i was complaining on the fact that swift on arm32 was kinda on a holding status.</br></br>
-And i though it's not possible we must do something before it is to late, at this moment we were on the early 
-swift 4.1 pre release.</br></br>
+All began on early 2018 and i was complaining on the fact that swift on arm32 was kinda on a frozen status.</br></br>
+And i thought it's not possible we must do something before it is to late, at this moment we were on the early 
+swift 4.1 pre release and then swift on arm32 was exactly one major release behind.</br></br>
 At the beginning i tried all different compile setting and i made also some comparison with a x86 linux system
 but this was only wasting time. </br></br>
 Then i tried all possible llvm/cland version and the same result.</br></br>
@@ -26,20 +26,17 @@ my fortune was to find just at the early stage the solution for the _/proc/cpu/a
 gave me a lot confidence that we don’t take so long for resolving this arm32 issue
 but at the end the must challenging part hast just began. </br></br>
 ## Memory managment ##
-An impostant topic in this a kind of project.</br>
-I started to look at the glibc  since
-2.23 version and also here scanned the malloc part of the glibc was i rhink i well done
-and realy stright forward and the same here a i learned a lot on the internaly memory menagment and i thougth why we must take care of memory alignment when we can deliver this to malloc
-I know that here there is room for improvement and so i leased so and i hope we found together a beat solution
-
+An important topic in this a kind of project.</br>
+I started to look at the glibc in particular on the malloc.c and here i tried different version but since glibc in the last releases
+is very solid i switched back to version 2.23.<br/> 
+My feeling is that malloc is very robust. <br/>
+After this i made the decision to let malloc to do the aligment.
 Then NIO come out and that got me the final motivation to keep fighting. <br/>
-I know [**Norman Maurer**](https://github.com/normanmaurer) from the java community, and i thought if he does something like this it must be well done
-and it is.</br> 
+I know [**Norman Maurer**](https://github.com/normanmaurer) from the java community, and i thought if he does something like this it must be well done and it is.</br></br> 
 And what for a great opportunity for such a kind of arm32  devices so a lot of ideas comes in my mind
-like a **NIO** based scalable MQTT broker.<br/>. Here i want to thank's both of  [**Norman Maurer**](https://github.com/normanmaurer) and
-[**@helge**](https://github.com/helje5) for the quick integration of arm32 on **NIO**. <br/>
-At the end i come to this patch release
-what i think is not the ideal solution but the most important think we have now a working environment to work on.<br/>.
+like a **NIO** based scalable MQTT broker.<br/> Here i want to thank's both of  [**Norman Maurer**](https://github.com/normanmaurer) and
+[**@helge**](https://github.com/helje5) for the quick integration of arm32 on **NIO**. <br/> <bt/>
+At the end i come to this patch release what i think is not the ideal solution but the most important think we have now a working environment to work on.<br/>.
 And finally this great [announcement](https://swift.org/blog/swift-community-hosted-ci/) i was so surprised thank you [**apple**](https://github.com/apple) and always thank you [steve](https://www.apple.com/stevejobs/)
 
 ## Patch Procedure ##
