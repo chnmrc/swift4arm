@@ -24,8 +24,8 @@ Then i tried all possible llvm/cland version and the same result.</br></br>
 After that i made the decision to scan completely the source code and it paid of, i learned so a lot of thinks 
 my fortune was to find just at the early stage the solution for the _/proc/cpu/aligment_ problem that
 gave me a lot confidence that we don’t take so long for resolving this arm32 issue
-but at the end the must challenging part hast just began.
-###Memory managment###
+but at the end the must challenging part hast just began. </br></br>
+## Memory managment ##
 the most impostant think in this a kind of project
 i started to look at all glibc version since
 2.23 and also here scanned the malloc part of the glibc was i rhink i well done
