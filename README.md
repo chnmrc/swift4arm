@@ -15,7 +15,7 @@
 >	* ARCH build support
 
 ## Brief Introduction ##
-All began on early 2018 and i was complaining on the fact that swift on arm32 was kinda on a frozen status.</br></br>
+All began on early 2018 and i was complaining on the fact that swift on arm32 was kind on a frozen status.</br></br>
 And i thought it's not possible we must do something before it is to late, at this moment we were on the early 
 swift 4.1 pre release and then swift on arm32 was exactly one major release behind.</br></br>
 At the beginning i tried all different compile setting and i made also some comparison with a x86 linux system
@@ -24,7 +24,7 @@ Then i tried all possible llvm/clang version and the same result.</br></br>
 After that i made the decision to scan completely the source code and it paid off.</br></br>
 I found just at the early stage the solution for the _/proc/cpu/alignment_ problem that
 gave me a lot confidence that we don’t take so long for resolving this arm32 issue
-but at the end the must challenging part hast just began. </br></br>
+but at the end the must challenging part has to come. </br></br>
 ## Memory managment ##
 An important topic in this a kind of project.</br>
 I started to look at the glibc in particular on the malloc.c and here i tried different version but since glibc in the last releases
