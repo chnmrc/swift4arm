@@ -1,10 +1,10 @@
 <img src="images/SWIFT4ARM.png" alt="Swift4Arm" height="80" >
 
 # Swift 4 Arm
-> 1. **Integration Major Problem**
+> 1. ## Integration Major Problem ##
 > 2. ## Brief Introduction ##
 > 3. ## Memory managment ##
-> 4. ## System patching ##
+> 4. ## Patch Procedure ##
 
 </br></br>
 
@@ -40,7 +40,7 @@ what ithink is not the ideal solution but the most important think we have now a
 And finally this great [announcement](https://swift.org/blog/swift-community-hosted-ci/) i was so surprised thank you @chnmrc and always
 thank you [steve](https://www.apple.com/stevejobs/)
 
-# Patch Procedure #
+## Patch Procedure ##
 
 * Follow also the Instruction of  [**@uraimo**](https://github.com/uraimo/buildSwiftOnARM) on his github repository but without his patch procedure
 * git checkout  __git clone https://github.com/apple/swift__
