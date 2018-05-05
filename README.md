@@ -21,8 +21,8 @@ swift 4.1 pre release and then swift on arm32 was exactly one major release behi
 At the beginning i tried all different compile setting and i made also some comparison with a x86 linux system
 but this was only wasting time. </br></br>
 Then i tried all possible llvm/cland version and the same result.</br></br>
-After that i made the decision to scan completely the source code and it paid of, i learned so a lot of thinks 
-my fortune was to find just at the early stage the solution for the _/proc/cpu/aligment_ problem that
+After that i made the decision to scan completely the source code and it paid off.</br></br>
+I learned so a lot of thinks my fortune was to find just at the early stage the solution for the _/proc/cpu/aligment_ problem that
 gave me a lot confidence that we don’t take so long for resolving this arm32 issue
 but at the end the must challenging part hast just began. </br></br>
 ## Memory managment ##
