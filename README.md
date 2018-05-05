@@ -52,8 +52,7 @@ And finally this great [announcement](https://swift.org/blog/swift-community-hos
 * For __Swift on arm64__  follow the work of [**@futurejones**](https://github.com/futurejones) 
 * For further question please contact the [**swift arm slack group**](https://swift-arm.slack.com/)
 
-<br/>
-<br/>
+
 ## Conclusions ##
 <br/>
 <br/>
