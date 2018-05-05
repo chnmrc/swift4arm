@@ -5,8 +5,8 @@
 
 
 
-All began on early 2018 and i was complaining on the fact that swift on arm32 was kinda on a holding status
- and i though its not possible we must do something before it is to late at this moment we were on the early 
+All began on early 2018 and i was complaining on the fact that swift on arm32 was kinda on a holding status.\
+And i though its not possible we must do something before it is to late at this moment we were on the early 
 swift 4.1 pre release.\
 at the beginning i tried all different compile setting and i made also some comparison with a x86 linux system
 but this was only wasting time.
@@ -27,7 +27,7 @@ I know norman maurer from the java community and i thout if he does something li
 and it is and what for a hreat opportunity fot such a kind of arm32 bit devices so a lot of ideas come in my mind.
 and so finaly i come to this patch release
 what ithink is not the ideal solution but the most important think we have now a working enviroment
-And finally this great [announcement](https://www.apple.com/stevejobs/) i was so surprised thank you @chnmrc and always
+And finally this great [announcement](https://swift.org/blog/swift-community-hosted-ci/) i was so surprised thank you @chnmrc and always
 thank you [steve](https://www.apple.com/stevejobs/)
 
 
