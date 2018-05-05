@@ -54,10 +54,11 @@ thank you [steve](https://www.apple.com/stevejobs/)
 
 <br/>
 <br/>
-__Post Scriptum__<br/>
+__Post Scriptum__
 <br/>
-> Many Thanks to [**@hpux735**](https://github.com/hpux735) for the great support.<br/>
-> And also to [@joe](http://dev.iachieved.it/iachievedit/) for initiating all this.
+<br/>
+* Many Thanks to [**@hpux735**](https://github.com/hpux735) for the great support. <br/>
+* And also to [@joe](http://dev.iachieved.it/iachievedit/) for initiating all this.
 
 
 <br/>
