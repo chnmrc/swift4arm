@@ -53,7 +53,7 @@ And finally this great [announcement](https://swift.org/blog/swift-community-hos
 
 <br/>
 <br/>
-**_Post Scriptum_**
+_ Post Scriptum _
 <br/>
 <br/>
 * Many Thanks to [**@hpux735**](https://github.com/hpux735) for the great support. <br/>
