@@ -57,7 +57,7 @@ And finally this great [announcement](https://swift.org/blog/swift-community-hos
 <br/>
 <br/>
 
-> For any challenging project swift related fell free to [**contact me**](http://mchini.com) <info@mchini.com>.
+> For any challenging project swift related feel free to [**contact me**](http://mchini.com) <info@mchini.com>.
 
 <br/>
 <br/>
