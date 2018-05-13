@@ -112,7 +112,7 @@ diff -Naur -x '*.o' -x '*.so' -x '*.exe' -x '*.pdf' -x '*.swp' -x '*.tgz' -x 'bu
      
 diff -Naur -x '*.o' -x '*.so' -x '*.exe' -x '*.pdf' -x '*.swp' -x '*.tgz' -x 'build*' -x 'install*' -x '.build*' -x '.git*' -x '.ninja_log*' /mnt/SWIFT/4.1_ORIGINAL/swift-corelibs-foundation/CoreFoundation/Base.subproj/CFRuntime.h /mnt/SWIFT/4.1/swift-corelibs-foundation/CoreFoundation/Base.subproj/CFRuntime.h
 --- /mnt/SWIFT/4.1_ORIGINAL/swift-corelibs-foundation/CoreFoundation/Base.subproj/CFRuntime.h	2018-05-04 22:49:46.247043970 +0200
-+++ /mnt/SWIFT/4.1/swift-corelibs-foundation/CoreFoundation/Base.subproj/CFRuntime.h	2018-05-13 19:57:38.795610206 +0200
++++ /mnt/SWIFT/4.1/swift-corelibs-foundation/CoreFoundation/Base.subproj/CFRuntime.h	2018-05-13 22:49:57.111220496 +0200
 @@ -196,10 +196,20 @@
      uint32_t _swift_strong_rc;
      uint32_t _swift_weak_rc;
@@ -125,12 +125,11 @@ diff -Naur -x '*.o' -x '*.so' -x '*.exe' -x '*.pdf' -x '*.swp' -x '*.tgz' -x 'bu
 +
  } CFRuntimeBase;
  
--#define INIT_CFRUNTIME_BASE(...) {0, _CF_CONSTANT_OBJECT_STRONG_RC, 0, 0x0000000000000080ULL}
 +
 +#if __LP64__
-+#define INIT_CFRUNTIME_BASE(...) {0, 0x0000000000000080ULL}
+ #define INIT_CFRUNTIME_BASE(...) {0, _CF_CONSTANT_OBJECT_STRONG_RC, 0, 0x0000000000000080ULL}
 +#else
-+#define INIT_CFRUNTIME_BASE(...) {0, 0x00000080UL}
++#define INIT_CFRUNTIME_BASE(...) {0, _CF_CONSTANT_OBJECT_STRONG_RC, 0, 0x00000080UL}
 +#endif
  
  #else
