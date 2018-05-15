@@ -5,7 +5,7 @@
 > 2. ## Brief Introduction ##
 > 3. ## Memory managment ##
 > 4. ## Patch Procedure ##
-> 5  ## Download binary ##
+> 5. ## Download binary ##
 
 </br></br>
 
