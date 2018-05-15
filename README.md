@@ -5,6 +5,7 @@
 > 2. ## Brief Introduction ##
 > 3. ## Memory managment ##
 > 4. ## Patch Procedure ##
+> 5  ## Download binary ##
 
 </br></br>
 
@@ -52,7 +53,10 @@ And finally this great [announcement](https://swift.org/blog/swift-community-hos
 * For further question please contact the [**swift arm slack group**](https://swift-arm.slack.com/)
 
 
-
+## Download binary ##
+Here you can download the [**complete binary tar**](http://mchini.com/swift/swift-4.1-RELEASE-ARMv7.tgz). <br/>
+I tested it against several projects : [**Kitura**](https://github.com/IBM-Swift/Kitura), [**SwiftNIO**](https://github.com/apple/swift-nio) etc.
+feel free to report any issue.
 
 <br/>
 <br/>
