@@ -1,4 +1,4 @@
-diff -Naur -x '*.o' -x '*.so' -x '*.exe' -x '*.pdf' -x '*.swp' -x 'build*' -x 'install*' -x '.build*' -x '.git*' -x '.ninja_log*' /mnt/SWIFT/4.1_ORIGINAL/llvm/lib/ExecutionEngine/RuntimeDyld/RuntimeDyldELF.cpp /mnt/SWIFT/4.1/llvm/lib/ExecutionEngine/RuntimeDyld/RuntimeDyldELF.cpp
+diff -Naur -x '*.o' -x '*.so' -x '*.exe' -x '*.pdf' -x '*.swp' -x '*.tgz' -x 'build*' -x 'install*' -x '.build*' -x '.git*' -x '.ninja_log*' -x '.configuration*' /mnt/SWIFT/4.1_ORIGINAL/llvm/lib/ExecutionEngine/RuntimeDyld/RuntimeDyldELF.cpp /mnt/SWIFT/4.1/llvm/lib/ExecutionEngine/RuntimeDyld/RuntimeDyldELF.cpp
 --- /mnt/SWIFT/4.1_ORIGINAL/llvm/lib/ExecutionEngine/RuntimeDyld/RuntimeDyldELF.cpp	2018-05-05 18:47:58.690147442 +0000
 +++ /mnt/SWIFT/4.1/llvm/lib/ExecutionEngine/RuntimeDyld/RuntimeDyldELF.cpp	2018-05-03 16:29:46.052996300 +0000
 @@ -486,6 +486,9 @@
@@ -31,57 +31,22 @@ diff -Naur -x '*.o' -x '*.so' -x '*.exe' -x '*.pdf' -x '*.swp' -x 'build*' -x 'i
      } else {
        uint32_t *Placeholder =
          reinterpret_cast<uint32_t*>(computePlaceholderAddress(SectionID, Offset));
-diff -Naur -x '*.o' -x '*.so' -x '*.exe' -x '*.pdf' -x '*.swp' -x 'build*' -x 'install*' -x '.build*' -x '.git*' -x '.ninja_log*' /mnt/SWIFT/4.1_ORIGINAL/swift/stdlib/public/SwiftShims/RefCount.h /mnt/SWIFT/4.1/swift/stdlib/public/SwiftShims/RefCount.h
+diff -Naur -x '*.o' -x '*.so' -x '*.exe' -x '*.pdf' -x '*.swp' -x '*.tgz' -x 'build*' -x 'install*' -x '.build*' -x '.git*' -x '.ninja_log*' -x '.configuration*' /mnt/SWIFT/4.1_ORIGINAL/swift/stdlib/public/SwiftShims/RefCount.h /mnt/SWIFT/4.1/swift/stdlib/public/SwiftShims/RefCount.h
 --- /mnt/SWIFT/4.1_ORIGINAL/swift/stdlib/public/SwiftShims/RefCount.h	2018-05-05 18:47:55.478188106 +0000
-+++ /mnt/SWIFT/4.1/swift/stdlib/public/SwiftShims/RefCount.h	2018-05-04 01:32:51.485094417 +0000
++++ /mnt/SWIFT/4.1/swift/stdlib/public/SwiftShims/RefCount.h	2018-05-15 04:46:03.790049756 +0000
 @@ -1302,7 +1302,7 @@
  
    public:
    HeapObjectSideTableEntry(HeapObject *newObject)
 -    : object(newObject), refCounts()
-+    : object(newObject)//, refCounts()
++    : object(newObject), refCounts(SideTableRefCounts::Initialized)
    { }
  
  #pragma clang diagnostic push
-diff -Naur -x '*.o' -x '*.so' -x '*.exe' -x '*.pdf' -x '*.swp' -x 'build*' -x 'install*' -x '.build*' -x '.git*' -x '.ninja_log*' /mnt/SWIFT/4.1_ORIGINAL/swift/stdlib/public/runtime/Heap.cpp /mnt/SWIFT/4.1/swift/stdlib/public/runtime/Heap.cpp
---- /mnt/SWIFT/4.1_ORIGINAL/swift/stdlib/public/runtime/Heap.cpp	2018-05-05 18:47:55.478188106 +0000
-+++ /mnt/SWIFT/4.1/swift/stdlib/public/runtime/Heap.cpp	2018-05-04 01:13:22.481825251 +0000
-@@ -53,20 +53,21 @@
- void *swift::swift_slowAlloc(size_t size, size_t alignMask)
-     SWIFT_CC(RegisterPreservingCC_IMPL) {
-   void *p;
--  if (alignMask <= MALLOC_ALIGN_MASK) {
--    p = malloc(size);
--  } else {
--    p = AlignedAlloc(size, alignMask + 1);
--  }
-+//  if (alignMask <= MALLOC_ALIGN_MASK) {
-+//    p = malloc(size);
-+    p = calloc(1,size); // NEW
-+//  } else {
-+//    p = AlignedAlloc(size, alignMask + 1 );
-+//  }
-   if (!p) swift::crash("Could not allocate memory.");
-   return p;
- }
- 
- void swift::swift_slowDealloc(void *ptr, size_t bytes, size_t alignMask)
-     SWIFT_CC(RegisterPreservingCC_IMPL) {
--  if (alignMask <= MALLOC_ALIGN_MASK) {
--    free(ptr);
--  } else {
--    AlignedFree(ptr);
--  }
-+//  if (alignMask <= MALLOC_ALIGN_MASK) {
-+    free(ptr);  // MARCO
-+//  } else {
-+//    AlignedFree(ptr);
-+//  }
- }
-diff -Naur -x '*.o' -x '*.so' -x '*.exe' -x '*.pdf' -x '*.swp' -x 'build*' -x 'install*' -x '.build*' -x '.git*' -x '.ninja_log*' /mnt/SWIFT/4.1_ORIGINAL/swift-corelibs-foundation/CoreFoundation/Base.subproj/CFRuntime.c /mnt/SWIFT/4.1/swift-corelibs-foundation/CoreFoundation/Base.subproj/CFRuntime.c
+diff -Naur -x '*.o' -x '*.so' -x '*.exe' -x '*.pdf' -x '*.swp' -x '*.tgz' -x 'build*' -x 'install*' -x '.build*' -x '.git*' -x '.ninja_log*' -x '.configuration*' /mnt/SWIFT/4.1_ORIGINAL/swift-corelibs-foundation/CoreFoundation/Base.subproj/CFRuntime.c /mnt/SWIFT/4.1/swift-corelibs-foundation/CoreFoundation/Base.subproj/CFRuntime.c
 --- /mnt/SWIFT/4.1_ORIGINAL/swift-corelibs-foundation/CoreFoundation/Base.subproj/CFRuntime.c	2018-05-05 18:47:56.806171291 +0000
-+++ /mnt/SWIFT/4.1/swift-corelibs-foundation/CoreFoundation/Base.subproj/CFRuntime.c	2018-05-05 18:43:36.865551490 +0000
-@@ -382,12 +382,12 @@
++++ /mnt/SWIFT/4.1/swift-corelibs-foundation/CoreFoundation/Base.subproj/CFRuntime.c	2018-05-14 19:42:04.934488532 +0000
+@@ -382,7 +382,7 @@
      uintptr_t isa = __CFRuntimeObjCClassTable[typeID];
      CFIndex size = sizeof(CFRuntimeBase) + extraBytes;
      CFRuntimeClass *cls = __CFRuntimeClassTable[typeID];
@@ -90,13 +55,63 @@ diff -Naur -x '*.o' -x '*.so' -x '*.exe' -x '*.pdf' -x '*.swp' -x 'build*' -x 'i
      
      CFRuntimeBase *memory = (CFRuntimeBase *)swift_allocObject(isa, size, align - 1);
      
-     // Zero the rest of the memory, starting at cfinfo
--    memset(&memory->_cfinfoa, 0, size - (sizeof(memory->_cfisa) + sizeof(memory->_swift_strong_rc) + sizeof(memory->_swift_weak_rc)));
-+    //memset(&memory->_cfinfoa, 0, size - (sizeof(memory->_cfisa) + sizeof(memory->_swift_strong_rc) + sizeof(memory->_swift_weak_rc)));
+@@ -391,6 +391,7 @@
      
      // Set up the cfinfo struct
      uint32_t *cfinfop = (uint32_t *)&(memory->_cfinfoa);
-diff -Naur -x '*.o' -x '*.so' -x '*.exe' -x '*.pdf' -x '*.swp' -x 'build*' -x 'install*' -x '.build*' -x '.git*' -x '.ninja_log*' /mnt/SWIFT/4.1_ORIGINAL/swift-corelibs-libdispatch/src/CMakeLists.txt /mnt/SWIFT/4.1/swift-corelibs-libdispatch/src/CMakeLists.txt
++ 
+     // The 0x80 means we use the default allocator
+     *cfinfop = (uint32_t)(((uint32_t)typeID << 8) | (0x80));
+     
+@@ -1657,7 +1658,7 @@
+     CFTypeID typeID = __CFTypeIDFromInfo(info);
+     CFRuntimeClass *cfClass = __CFRuntimeClassTable[typeID];
+     void (*func)(CFTypeRef) = __CFRuntimeClassTable[typeID]->finalize;
+-    if (NULL != func) {
++    if (NULL != func && typeID > 0) {
+         func(cf);
+     }
+ }
+diff -Naur -x '*.o' -x '*.so' -x '*.exe' -x '*.pdf' -x '*.swp' -x '*.tgz' -x 'build*' -x 'install*' -x '.build*' -x '.git*' -x '.ninja_log*' -x '.configuration*' /mnt/SWIFT/4.1_ORIGINAL/swift-corelibs-foundation/CoreFoundation/Base.subproj/CFRuntime.h /mnt/SWIFT/4.1/swift-corelibs-foundation/CoreFoundation/Base.subproj/CFRuntime.h
+--- /mnt/SWIFT/4.1_ORIGINAL/swift-corelibs-foundation/CoreFoundation/Base.subproj/CFRuntime.h	2018-05-04 20:49:46.247043970 +0000
++++ /mnt/SWIFT/4.1/swift-corelibs-foundation/CoreFoundation/Base.subproj/CFRuntime.h	2018-05-13 20:49:57.111220496 +0000
+@@ -196,10 +196,20 @@
+     uint32_t _swift_strong_rc;
+     uint32_t _swift_weak_rc;
+     // This is for CF's use, and must match _NSCFType layout
++#if __LP64__
+     _Atomic(uint64_t) _cfinfoa;
++#else
++    _Atomic(uint32_t) _cfinfoa;
++#endif
++
+ } CFRuntimeBase;
+ 
++
++#if __LP64__
+ #define INIT_CFRUNTIME_BASE(...) {0, _CF_CONSTANT_OBJECT_STRONG_RC, 0, 0x0000000000000080ULL}
++#else
++#define INIT_CFRUNTIME_BASE(...) {0, _CF_CONSTANT_OBJECT_STRONG_RC, 0, 0x00000080UL}
++#endif
+ 
+ #else
+ 
+diff -Naur -x '*.o' -x '*.so' -x '*.exe' -x '*.pdf' -x '*.swp' -x '*.tgz' -x 'build*' -x 'install*' -x '.build*' -x '.git*' -x '.ninja_log*' -x '.configuration*' /mnt/SWIFT/4.1_ORIGINAL/swift-corelibs-foundation/CoreFoundation/String.subproj/CFString.h /mnt/SWIFT/4.1/swift-corelibs-foundation/CoreFoundation/String.subproj/CFString.h
+--- /mnt/SWIFT/4.1_ORIGINAL/swift-corelibs-foundation/CoreFoundation/String.subproj/CFString.h	2018-05-04 20:49:46.351042646 +0000
++++ /mnt/SWIFT/4.1/swift-corelibs-foundation/CoreFoundation/String.subproj/CFString.h	2018-05-15 18:19:30.362766240 +0000
+@@ -157,7 +157,11 @@
+         uintptr_t _cfisa;
+         uint32_t _swift_strong_rc;
+         uint32_t _swift_weak_rc;
++#if defined(__LP64__)
+         uint64_t _cfinfoa;
++#else
++        uint32_t _cfinfoa;
++#endif
+     } _base;
+     uint8_t *_ptr;
+ #if defined(__LP64__) && defined(__BIG_ENDIAN__)
+diff -Naur -x '*.o' -x '*.so' -x '*.exe' -x '*.pdf' -x '*.swp' -x '*.tgz' -x 'build*' -x 'install*' -x '.build*' -x '.git*' -x '.ninja_log*' -x '.configuration*' /mnt/SWIFT/4.1_ORIGINAL/swift-corelibs-libdispatch/src/CMakeLists.txt /mnt/SWIFT/4.1/swift-corelibs-libdispatch/src/CMakeLists.txt
 --- /mnt/SWIFT/4.1_ORIGINAL/swift-corelibs-libdispatch/src/CMakeLists.txt	2018-05-05 18:47:54.806196617 +0000
 +++ /mnt/SWIFT/4.1/swift-corelibs-libdispatch/src/CMakeLists.txt	2018-05-05 18:09:19.880649139 +0000
 @@ -207,6 +207,13 @@
@@ -121,7 +136,7 @@ diff -Naur -x '*.o' -x '*.so' -x '*.exe' -x '*.pdf' -x '*.swp' -x 'build*' -x 'i
 +            "${INSTALL_TARGET_DIR}/${ARCH_SYSTEM}")
  endif()
  
-diff -Naur -x '*.o' -x '*.so' -x '*.exe' -x '*.pdf' -x '*.swp' -x 'build*' -x 'install*' -x '.build*' -x '.git*' -x '.ninja_log*' /mnt/SWIFT/4.1_ORIGINAL/swiftpm/Sources/Build/Triple.swift /mnt/SWIFT/4.1/swiftpm/Sources/Build/Triple.swift
+diff -Naur -x '*.o' -x '*.so' -x '*.exe' -x '*.pdf' -x '*.swp' -x '*.tgz' -x 'build*' -x 'install*' -x '.build*' -x '.git*' -x '.ninja_log*' -x '.configuration*' /mnt/SWIFT/4.1_ORIGINAL/swiftpm/Sources/Build/Triple.swift /mnt/SWIFT/4.1/swiftpm/Sources/Build/Triple.swift
 --- /mnt/SWIFT/4.1_ORIGINAL/swiftpm/Sources/Build/Triple.swift	2018-05-05 18:47:55.806183953 +0000
 +++ /mnt/SWIFT/4.1/swiftpm/Sources/Build/Triple.swift	2018-05-04 02:04:21.944479656 +0000
 @@ -111,6 +111,8 @@
@@ -133,7 +148,7 @@ diff -Naur -x '*.o' -x '*.so' -x '*.exe' -x '*.pdf' -x '*.swp' -x 'build*' -x 'i
    #else
      public static let hostTriple: Triple = .linux
    #endif
-diff -Naur -x '*.o' -x '*.so' -x '*.exe' -x '*.pdf' -x '*.swp' -x 'build*' -x 'install*' -x '.build*' -x '.git*' -x '.ninja_log*' /mnt/SWIFT/4.1_ORIGINAL/swiftpm/Utilities/bootstrap /mnt/SWIFT/4.1/swiftpm/Utilities/bootstrap
+diff -Naur -x '*.o' -x '*.so' -x '*.exe' -x '*.pdf' -x '*.swp' -x '*.tgz' -x 'build*' -x 'install*' -x '.build*' -x '.git*' -x '.ninja_log*' -x '.configuration*' /mnt/SWIFT/4.1_ORIGINAL/swiftpm/Utilities/bootstrap /mnt/SWIFT/4.1/swiftpm/Utilities/bootstrap
 --- /mnt/SWIFT/4.1_ORIGINAL/swiftpm/Utilities/bootstrap	2018-05-05 18:47:55.806183953 +0000
 +++ /mnt/SWIFT/4.1/swiftpm/Utilities/bootstrap	2018-05-05 18:11:10.979563563 +0000
 @@ -889,10 +889,13 @@
