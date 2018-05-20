@@ -33,19 +33,24 @@ diff -Naur -x '*.o' -x '*.so' -x '*.exe' -x '*.pdf' -x '*.swp' -x '*.tgz' -x 'bu
          reinterpret_cast<uint32_t*>(computePlaceholderAddress(SectionID, Offset));
 diff -Naur -x '*.o' -x '*.so' -x '*.exe' -x '*.pdf' -x '*.swp' -x '*.tgz' -x 'build*' -x 'install*' -x '.build*' -x '.git*' -x '.ninja_log*' -x '.configuration*' /mnt/SWIFT/4.1_ORIGINAL/swift/stdlib/public/SwiftShims/RefCount.h /mnt/SWIFT/4.1/swift/stdlib/public/SwiftShims/RefCount.h
 --- /mnt/SWIFT/4.1_ORIGINAL/swift/stdlib/public/SwiftShims/RefCount.h	2018-05-05 18:47:55.478188106 +0000
-+++ /mnt/SWIFT/4.1/swift/stdlib/public/SwiftShims/RefCount.h	2018-05-15 04:46:03.790049756 +0000
-@@ -1302,7 +1302,7 @@
++++ /mnt/SWIFT/4.1/swift/stdlib/public/SwiftShims/RefCount.h	2018-05-19 18:03:39.458508833 +0000
+@@ -1302,7 +1302,12 @@
  
    public:
    HeapObjectSideTableEntry(HeapObject *newObject)
 -    : object(newObject), refCounts()
-+    : object(newObject), refCounts(SideTableRefCounts::Initialized)
++    : object(newObject), 
++#if __arm__ // https://bugs.swift.org/browse/SR-5846
++    refCounts(SideTableRefCounts::Initialized)
++#else
++    refCounts()
++#endif
    { }
  
  #pragma clang diagnostic push
 diff -Naur -x '*.o' -x '*.so' -x '*.exe' -x '*.pdf' -x '*.swp' -x '*.tgz' -x 'build*' -x 'install*' -x '.build*' -x '.git*' -x '.ninja_log*' -x '.configuration*' /mnt/SWIFT/4.1_ORIGINAL/swift-corelibs-foundation/CoreFoundation/Base.subproj/CFRuntime.c /mnt/SWIFT/4.1/swift-corelibs-foundation/CoreFoundation/Base.subproj/CFRuntime.c
 --- /mnt/SWIFT/4.1_ORIGINAL/swift-corelibs-foundation/CoreFoundation/Base.subproj/CFRuntime.c	2018-05-05 18:47:56.806171291 +0000
-+++ /mnt/SWIFT/4.1/swift-corelibs-foundation/CoreFoundation/Base.subproj/CFRuntime.c	2018-05-14 19:42:04.934488532 +0000
++++ /mnt/SWIFT/4.1/swift-corelibs-foundation/CoreFoundation/Base.subproj/CFRuntime.c	2018-05-16 20:35:59.294046582 +0000
 @@ -382,7 +382,7 @@
      uintptr_t isa = __CFRuntimeObjCClassTable[typeID];
      CFIndex size = sizeof(CFRuntimeBase) + extraBytes;
@@ -63,7 +68,18 @@ diff -Naur -x '*.o' -x '*.so' -x '*.exe' -x '*.pdf' -x '*.swp' -x '*.tgz' -x 'bu
      // The 0x80 means we use the default allocator
      *cfinfop = (uint32_t)(((uint32_t)typeID << 8) | (0x80));
      
-@@ -1657,7 +1658,7 @@
+@@ -859,7 +860,9 @@
+     CFTYPE_SWIFT_FUNCDISPATCH0(CFHashCode, cf, NSObject.hash);
+     __CFGenericAssertIsCF(cf);
+     CFHashCode (*hash)(CFTypeRef cf) = __CFRuntimeClassTable[__CFGenericTypeID_inline(cf)]->hash; 
+-    if (NULL != hash) {
++    if (CFGetTypeID(cf) > 0)
++	printf("ZERO HASH %s\n",CFStringGetCStringPtr(cf, kCFStringEncodingUTF8));
++    if (NULL != hash && CFGetTypeID(cf) > 0  ) {
+ 	return hash(cf);
+     }
+     return (CFHashCode)cf;
+@@ -1657,7 +1660,7 @@
      CFTypeID typeID = __CFTypeIDFromInfo(info);
      CFRuntimeClass *cfClass = __CFRuntimeClassTable[typeID];
      void (*func)(CFTypeRef) = __CFRuntimeClassTable[typeID]->finalize;
