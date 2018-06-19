@@ -136,22 +136,47 @@ diff -Naur -x '*.o' -x '*.so' -x '*.exe' -x '*.pdf' -x '*.swp' -x '*.tgz' -x '*.
      open var timeIntervalSinceReferenceDate: TimeInterval {
 diff -Naur -x '*.o' -x '*.so' -x '*.exe' -x '*.pdf' -x '*.swp' -x '*.tgz' -x '*.pyc' -x 'build*' -x 'install*' -x '.build*' -x '.git*' -x '.ninja_log*' -x '.configuration*' /mnt/SWIFT/4.1.2_ORIGINAL/swift-corelibs-foundation/Foundation/NSObjCRuntime.swift /mnt/SWIFT/4.1.2/swift-corelibs-foundation/Foundation/NSObjCRuntime.swift
 --- /mnt/SWIFT/4.1.2_ORIGINAL/swift-corelibs-foundation/Foundation/NSObjCRuntime.swift	2018-06-17 18:11:01.553327666 +0000
-+++ /mnt/SWIFT/4.1.2/swift-corelibs-foundation/Foundation/NSObjCRuntime.swift	2018-06-17 18:31:45.239189405 +0000
-@@ -212,7 +212,33 @@
++++ /mnt/SWIFT/4.1.2/swift-corelibs-foundation/Foundation/NSObjCRuntime.swift	2018-06-19 19:53:12.066153024 +0000
+@@ -212,10 +212,21 @@
  internal func NSInvalidArgument(_ message: String, method: String = #function, file: StaticString = #file, line: UInt = #line) -> Never {
      fatalError("\(method): \(message)", file: file, line: line)
  }
 -
 +#if arch(arm)
-+internal struct _CFInfo {
-+    // This must match _CFRuntimeBase
-+    var info: UInt32
+ internal struct _CFInfo {
+     // This must match _CFRuntimeBase
+     var info: UInt32
 +    init(typeID: CFTypeID) {
 +        // This matches what _CFRuntimeCreateInstance does to initialize the info value
 +        info = UInt32((UInt32(typeID) << 8) | (UInt32(0x80)))
 +    }
 +    init(typeID: CFTypeID, extra: UInt32) {
 +        info = UInt32((UInt32(typeID) << 8) | (UInt32(0x80)))
++    }
++}
++internal struct _CFInfoPad {
++    // This must match _CFRuntimeBase
++    var info: UInt32
+     var pad : UInt32
+     init(typeID: CFTypeID) {
+         // This matches what _CFRuntimeCreateInstance does to initialize the info value
+@@ -227,6 +238,37 @@
+         pad = extra
+     }
+ }
++#else
++internal struct _CFInfo {
++    // This must match _CFRuntimeBase
++    var info: UInt32
++    var pad : UInt32
++    init(typeID: CFTypeID) {
++        // This matches what _CFRuntimeCreateInstance does to initialize the info value
++        info = UInt32((UInt32(typeID) << 8) | (UInt32(0x80)))
++        pad = 0
++    }
++    init(typeID: CFTypeID, extra: UInt32) {
++        info = UInt32((UInt32(typeID) << 8) | (UInt32(0x80)))
++        pad = extra
 +    }
 +}
 +internal struct _CFInfoPad {
@@ -168,14 +193,6 @@ diff -Naur -x '*.o' -x '*.so' -x '*.exe' -x '*.pdf' -x '*.swp' -x '*.tgz' -x '*.
 +        pad = extra
 +    }
 +}
-+#else
- internal struct _CFInfo {
-     // This must match _CFRuntimeBase
-     var info: UInt32
-@@ -227,6 +253,8 @@
-         pad = extra
-     }
- }
 +#endif
 +
  
