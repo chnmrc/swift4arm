@@ -42,10 +42,9 @@ And finally this great [announcement](https://swift.org/blog/swift-community-hos
 
 ## Patch Procedure ##
 
-* Follow also the Instruction of  [**@uraimo**](https://github.com/uraimo/buildSwiftOnARM) on his github repository but without his patch procedure
 * git checkout  __git clone https://github.com/apple/swift__
 * git checkout of all depency swift packages __./swift/utils/update-checkout --clone__
-* git checkout __swift-4.1-RELEASE__ branch on all modules 
+* git checkout __swift-4.1.2-RELEASE__ branch on all modules 
 * apply the patch on the starting directory -> **patch -p4 < swift4arm.patch**
 * Now you are ready for the building procedure
 * For a Docker installation i advice to follow the work of [**@helge**](https://github.com/helje5)
@@ -54,7 +53,7 @@ And finally this great [announcement](https://swift.org/blog/swift-community-hos
 
 
 ## Download binary ##
-Here you can download the [**complete binary tar**](http://mchini.com/swift/swift-4.1-RELEASE-ARMv7.tgz). <br/>
+Here you can download the [**complete binary tar**](http://mchini.com/swift/swift-4.1.2-RELEASE-ARMv7.tgz). <br/>
 I tested it against several projects : [**Kitura**](https://github.com/IBM-Swift/Kitura), [**SwiftNIO**](https://github.com/apple/swift-nio) etc.
 feel free to report any issue.
 
