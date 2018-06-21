@@ -47,6 +47,7 @@ And finally this great [announcement](https://swift.org/blog/swift-community-hos
 * git checkout __swift-4.1.2-RELEASE__ branch on all modules 
 * apply the patch on the starting directory -> **patch -p4 < swift4arm.patch**
 * Now you are ready for the building procedure
+* Consult also the great [**@uraimo**](https://github.com/uraimo/buildSwiftOnARM) resource
 * For a Docker installation i advice to follow the work of [**@helge**](https://github.com/helje5)
 * For __Swift on arm64__  follow the work of [**@futurejones**](https://github.com/futurejones) 
 * For further question please contact the [**swift arm slack group**](https://swift-arm.slack.com/)
