@@ -98,6 +98,18 @@ diff -Naur -x '*.o' -x '*.so' -x '*.exe' -x '*.pdf' -x '*.swp' -x '*.tgz' -x '*.
      } _base;
      uint8_t *_ptr;
  #if defined(__LP64__) && defined(__BIG_ENDIAN__)
+diff -Naur -x '*.o' -x '*.so' -x '*.exe' -x '*.pdf' -x '*.swp' -x '*.tgz' -x '*.pyc' -x 'build*' -x 'install*' -x '.build*' -x '.git*' -x '.ninja_log*' -x '.configuration*' /mnt/SWIFT/4.1.2_ORIGINAL/swift-corelibs-foundation/Foundation/NSCalendar.swift /mnt/SWIFT/4.1.2/swift-corelibs-foundation/Foundation/NSCalendar.swift
+--- /mnt/SWIFT/4.1.2_ORIGINAL/swift-corelibs-foundation/Foundation/NSCalendar.swift	2018-06-17 18:11:01.545327763 +0000
++++ /mnt/SWIFT/4.1.2/swift-corelibs-foundation/Foundation/NSCalendar.swift	2018-09-11 20:31:01.114959517 +0000
+@@ -124,7 +124,7 @@
+ 
+ open class NSCalendar : NSObject, NSCopying, NSSecureCoding {
+     typealias CFType = CFCalendar
+-    private var _base = _CFInfo(typeID: CFCalendarGetTypeID())
++    private var _base = _CFInfoPad(typeID: CFCalendarGetTypeID())
+     private var _identifier: UnsafeMutableRawPointer? = nil
+     private var _locale: UnsafeMutableRawPointer? = nil
+     private var _localeID: UnsafeMutableRawPointer? = nil
 diff -Naur -x '*.o' -x '*.so' -x '*.exe' -x '*.pdf' -x '*.swp' -x '*.tgz' -x '*.pyc' -x 'build*' -x 'install*' -x '.build*' -x '.git*' -x '.ninja_log*' -x '.configuration*' /mnt/SWIFT/4.1.2_ORIGINAL/swift-corelibs-foundation/Foundation/NSCharacterSet.swift /mnt/SWIFT/4.1.2/swift-corelibs-foundation/Foundation/NSCharacterSet.swift
 --- /mnt/SWIFT/4.1.2_ORIGINAL/swift-corelibs-foundation/Foundation/NSCharacterSet.swift	2018-06-17 18:11:01.545327763 +0000
 +++ /mnt/SWIFT/4.1.2/swift-corelibs-foundation/Foundation/NSCharacterSet.swift	2018-06-18 18:40:04.785333137 +0000
@@ -136,7 +148,7 @@ diff -Naur -x '*.o' -x '*.so' -x '*.exe' -x '*.pdf' -x '*.swp' -x '*.tgz' -x '*.
      open var timeIntervalSinceReferenceDate: TimeInterval {
 diff -Naur -x '*.o' -x '*.so' -x '*.exe' -x '*.pdf' -x '*.swp' -x '*.tgz' -x '*.pyc' -x 'build*' -x 'install*' -x '.build*' -x '.git*' -x '.ninja_log*' -x '.configuration*' /mnt/SWIFT/4.1.2_ORIGINAL/swift-corelibs-foundation/Foundation/NSObjCRuntime.swift /mnt/SWIFT/4.1.2/swift-corelibs-foundation/Foundation/NSObjCRuntime.swift
 --- /mnt/SWIFT/4.1.2_ORIGINAL/swift-corelibs-foundation/Foundation/NSObjCRuntime.swift	2018-06-17 18:11:01.553327666 +0000
-+++ /mnt/SWIFT/4.1.2/swift-corelibs-foundation/Foundation/NSObjCRuntime.swift	2018-06-19 19:53:12.066153024 +0000
++++ /mnt/SWIFT/4.1.2/swift-corelibs-foundation/Foundation/NSObjCRuntime.swift	2018-08-26 15:42:17.146830196 +0000
 @@ -212,10 +212,21 @@
  internal func NSInvalidArgument(_ message: String, method: String = #function, file: StaticString = #file, line: UInt = #line) -> Never {
      fatalError("\(method): \(message)", file: file, line: line)
@@ -198,6 +210,18 @@ diff -Naur -x '*.o' -x '*.so' -x '*.exe' -x '*.pdf' -x '*.swp' -x '*.tgz' -x '*.
  
  #if os(OSX) || os(iOS)
  private let _SwiftFoundationModuleName = "SwiftFoundation"
+diff -Naur -x '*.o' -x '*.so' -x '*.exe' -x '*.pdf' -x '*.swp' -x '*.tgz' -x '*.pyc' -x 'build*' -x 'install*' -x '.build*' -x '.git*' -x '.ninja_log*' -x '.configuration*' /mnt/SWIFT/4.1.2_ORIGINAL/swift-corelibs-foundation/Foundation/NSTimeZone.swift /mnt/SWIFT/4.1.2/swift-corelibs-foundation/Foundation/NSTimeZone.swift
+--- /mnt/SWIFT/4.1.2_ORIGINAL/swift-corelibs-foundation/Foundation/NSTimeZone.swift	2018-06-17 18:11:01.561327570 +0000
++++ /mnt/SWIFT/4.1.2/swift-corelibs-foundation/Foundation/NSTimeZone.swift	2018-09-11 19:44:47.302046800 +0000
+@@ -12,7 +12,7 @@
+ 
+ open class NSTimeZone : NSObject, NSCopying, NSSecureCoding, NSCoding {
+     typealias CFType = CFTimeZone
+-    private var _base = _CFInfo(typeID: CFTimeZoneGetTypeID())
++    private var _base = _CFInfoPad(typeID: CFTimeZoneGetTypeID())
+     private var _name: UnsafeMutableRawPointer? = nil
+     private var _data: UnsafeMutableRawPointer? = nil
+     private var _periods: UnsafeMutableRawPointer? = nil
 diff -Naur -x '*.o' -x '*.so' -x '*.exe' -x '*.pdf' -x '*.swp' -x '*.tgz' -x '*.pyc' -x 'build*' -x 'install*' -x '.build*' -x '.git*' -x '.ninja_log*' -x '.configuration*' /mnt/SWIFT/4.1.2_ORIGINAL/swift-corelibs-foundation/Foundation/NSURL.swift /mnt/SWIFT/4.1.2/swift-corelibs-foundation/Foundation/NSURL.swift
 --- /mnt/SWIFT/4.1.2_ORIGINAL/swift-corelibs-foundation/Foundation/NSURL.swift	2018-06-17 18:11:01.561327570 +0000
 +++ /mnt/SWIFT/4.1.2/swift-corelibs-foundation/Foundation/NSURL.swift	2018-06-18 18:00:38.669808506 +0000
